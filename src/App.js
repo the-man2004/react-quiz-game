@@ -1,6 +1,6 @@
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <h1>React Quiz Game</h1>
     </div>
   );
