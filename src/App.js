@@ -4,8 +4,10 @@ function App() {
   console.log(questions);
 
   return (
-    <div className="">
-      <h1>React Quiz Game</h1>
+    <div className="p-5 rounded-xl absolute inset-8 max-w-[750px] max-h-[500px] m-auto bg-secondary text-textColor font-bold shadow-2xl">
+      <h1 className="text-center text-lg sm:text-3xl">
+        Computer Hardware QUIZ
+      </h1>
     </div>
   );
 }
