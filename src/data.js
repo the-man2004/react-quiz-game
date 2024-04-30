@@ -1,7 +1,7 @@
 const questions = [
   {
     question: "What does computer hardware refer to?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Software programs and applications",
         isCorrect: false,
@@ -22,7 +22,7 @@ const questions = [
   },
   {
     question: `Which component is often referred to as the “brain” of the computer?`,
-    answers: [
+    answerOptions: [
       {
         answerText: "Graphics Processing Unit (GPU)",
         isCorrect: false,
@@ -43,7 +43,7 @@ const questions = [
   },
   {
     question: "What is the main function of the motherboard in a computer?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Storing data and applications",
         isCorrect: false,
@@ -66,7 +66,7 @@ const questions = [
   {
     question:
       "What type of memory is used for temporary storage of data that the CPU needs to access quickly?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Read-Only Memory (ROM)",
         isCorrect: false,
@@ -88,7 +88,7 @@ const questions = [
   {
     question:
       "Which storage device provides permanent storage for data, applications, and the operating system?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Random Access Memory (RAM)",
         isCorrect: false,
@@ -110,7 +110,7 @@ const questions = [
   {
     question:
       "What is the role of the Graphics Processing Unit (GPU) in a computer?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Executing instructions and processing data",
         isCorrect: false,
@@ -132,7 +132,7 @@ const questions = [
   {
     question:
       "What is the purpose of the Power Supply Unit (PSU) in a computer?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Providing internet connectivity",
         isCorrect: false,
@@ -153,7 +153,7 @@ const questions = [
   },
   {
     question: "Which of the following is an example of an input device?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Monitor",
         isCorrect: false,
@@ -174,7 +174,7 @@ const questions = [
   },
   {
     question: "What type of memory is lost when the computer is turned off?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Read-Only Memory (ROM)",
         isCorrect: false,
@@ -195,7 +195,7 @@ const questions = [
   },
   {
     question: "What are expansion cards used for in a computer?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Providing power to the CPU",
         isCorrect: false,
@@ -217,7 +217,7 @@ const questions = [
   {
     question:
       "Which component allows the computer to connect to a network and access the internet?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Central Processing Unit (CPU)",
         isCorrect: false,
@@ -238,7 +238,7 @@ const questions = [
   },
   {
     question: "What do cooling systems in a computer prevent?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Data loss due to power failure",
         isCorrect: false,
@@ -259,7 +259,7 @@ const questions = [
   },
   {
     question: "What is the function of optical drives in a computer?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Providing internet connectivity",
         isCorrect: false,
@@ -281,7 +281,7 @@ const questions = [
   {
     question:
       "Which device allows you to view the output of a computer’s processing?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Keyboard",
         isCorrect: false,
@@ -302,7 +302,7 @@ const questions = [
   },
   {
     question: "What is the purpose of “Add-ons” in a computer?",
-    answers: [
+    answerOptions: [
       {
         answerText: "Extending the functionality of the computer’s software",
         isCorrect: true,
