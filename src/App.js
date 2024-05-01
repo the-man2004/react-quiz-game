@@ -7,6 +7,7 @@ function App() {
   const [finishedQuiz, setFinishedQuiz] = useState(false);
   const [progress, setProgress] = useState(0);
   const [score, setScore] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   const [wrongAnswers, setWrongAnswers] = useState([]);
 
@@ -46,7 +47,6 @@ function App() {
       {/* Show before game starts */}
       {!isPlaying && !finishedQuiz && (
         <div className="h-full flex flex-col align-middle justify-center">
-          {" "}
           <h1 className="text-center font-extrabold text-2xl sm:text-4xl">
             Computer Hardware QUIZ
           </h1>
@@ -66,7 +66,15 @@ function App() {
               Question {progress + 1}/
               <span className="text-sm">{questions.length}</span>
             </span>
-            <span className="text-lg">score {score}</span>
+            <div>
+              <span className="text-lg">score {score}</span>
+              <button
+                onClick={() => setPaused(true)}
+                className="ml-3 px-5 py-1 bg-primary text-secondary rounded-full"
+              >
+                PAUSE
+              </button>
+            </div>
           </div>
           <div className="mt-8">
             <h2 className="text-2xl text-center font-extrabold sm:text-3xl">
@@ -86,6 +94,20 @@ function App() {
               ))}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Show if the quiz is paused */}
+      {paused && !finishedQuiz && (
+        <div className="absolute inset-0 flex flex-col align-middle justify-center gap-4 backdrop-blur-sm">
+          <Button
+            callbackFunc={() => {
+              handleRetryClick();
+              setPaused(false);
+            }}
+            text={"RETRY"}
+          />
+          <Button callbackFunc={() => setPaused(false)} text={"RESUME"} />
         </div>
       )}
 
@@ -120,7 +142,7 @@ function App() {
             </div>
           ) : (
             <h3 className="mt-8 mb-12 text-center font-extrabold text-2xl sm:text-4xl">
-              YOU GOT A PERFECT SCORE!
+              CONGRATULATIONS YOU GOT A PERFECT SCORE!
             </h3>
           )}
           <Button callbackFunc={handleRetryClick} text={"RETRY"} />
