@@ -8,7 +8,7 @@ function App() {
   const [progress, setProgress] = useState(0);
   const [score, setScore] = useState(0);
 
-  const [wrongAswers, setWrongAnswers] = useState([]);
+  const [wrongAnswers, setWrongAnswers] = useState([]);
 
   const handleStartClick = () => {
     setIsPlaying(true);
@@ -20,6 +20,7 @@ function App() {
     setFinishedQuiz(false);
     setProgress(0);
     setScore(0);
+    setWrongAnswers([]);
   };
 
   const handleOptionClick = (isCorrect, questionObj) => {
@@ -27,9 +28,9 @@ function App() {
       setScore(score + 50);
     } else {
       const newWrongAnswers =
-        wrongAswers.length === 0
-          ? [questionObj]
-          : [...wrongAswers, questionObj];
+        wrongAnswers.length === 0
+          ? [questionObj.question]
+          : [...wrongAnswers, questionObj.question];
       setWrongAnswers(newWrongAnswers);
     }
 
@@ -41,7 +42,7 @@ function App() {
   };
 
   return (
-    <div className="p-5 rounded-xl absolute inset-5 max-w-[750px] max-h-[500px] m-auto bg-secondary text-textColor font-bold shadow-2xl">
+    <div className="p-5 rounded-xl absolute inset-5 max-w-[750px] max-h-[500px] m-auto bg-secondary text-textColor font-bold shadow-2xl overflow-y-auto">
       {/* Show before game starts */}
       {!isPlaying && !finishedQuiz && (
         <div className="h-full flex flex-col align-middle justify-center">
@@ -56,6 +57,7 @@ function App() {
           <Button callbackFunc={handleStartClick} text={"START"} />
         </div>
       )}
+
       {/* Show while playing the game */}
       {isPlaying && !finishedQuiz && (
         <div>
@@ -70,14 +72,14 @@ function App() {
             <h2 className="text-2xl text-center font-extrabold sm:text-3xl">
               {questions[progress].question}
             </h2>
-            <div className="mx-auto max-w-[500px] mt-5 flex flex-col gap-5">
+            <div className="mx-auto max-w-[500px] mt-5 flex flex-col gap-4">
               {questions[progress].answerOptions.map((option) => (
                 <button
                   onClick={() =>
                     handleOptionClick(option.isCorrect, questions[progress])
                   }
                   key={Math.random()}
-                  className="py-2 px-5 text-left border-2 border-primary rounded-xl"
+                  className="py-2 px-5 text-left border-2 border-primary rounded-xl transition hover:scale-105"
                 >
                   {option.answerText}
                 </button>
@@ -86,10 +88,41 @@ function App() {
           </div>
         </div>
       )}
+
       {/* Show if game is over */}
       {finishedQuiz && (
         <div>
-          <p>Game over</p>
+          <h2 className="my-3 text-center font-extrabold text-2xl sm:text-4xl">
+            You got {score / 50}/{questions.length}
+          </h2>
+          <h4 className="mb-3 text-center font-extrabold text-xl sm:text-2xl">
+            score {score}
+          </h4>
+          {wrongAnswers.length !== 0 ? (
+            <div className="mt-5 mb-10">
+              <h3 className="font-extrabold text-center sm:text-xl">
+                Here is what you still need to learn
+              </h3>
+              <div className="mx-auto max-w-[500px] my-5 flex flex-col gap-4">
+                {wrongAnswers.map((question) => (
+                  <a
+                    href={
+                      "https://google.com/search?q=" +
+                      question.split(" ").join("+")
+                    }
+                    className="py-2 px-5 text-left border-2 border-primary rounded-xl transition hover:scale-105"
+                    key={Math.random()}
+                  >
+                    <h3>{question}</h3>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <h3 className="mt-8 mb-12 text-center font-extrabold text-2xl sm:text-4xl">
+              YOU GOT A PERFECT SCORE!
+            </h3>
+          )}
           <Button callbackFunc={handleRetryClick} text={"RETRY"} />
         </div>
       )}
